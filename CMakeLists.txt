@@ -1,15 +1,9 @@
-cmake_minimum_required(VERSION 2.8.9)
+cmake_minimum_required(VERSION 3.16)
 
 project(NFsim)
 
-#find_package(XMLRPC REQUIRED abyss-server c++2)
-
-
-#if (NOT XMLRPC_FOUND) 
-#  message (FATAL_ERROR "XMLRPC-C not found") 
-#endif (NOT XMLRPC_FOUND) 
-
-set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 set(SUB_DIRS
     src/nauty24 
@@ -36,23 +30,9 @@ set(SUB_DIRS
     src/NFcore/reactionSelector 
     src/NFcore/moleculeLists 
 )
-add_definitions("-Wno-deprecated-declarations")
 
+add_compile_options(-Wno-deprecated-declarations -Wno-format)
 
-IF(CMAKE_SYSTEM_NAME  MATCHES "Windows")
-   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-#   SET(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
-#   SET(BUILD_SHARED_LIBRARIES OFF)
-#   SET(CMAKE_EXE_LINKER_FLAGS "-static")
-ELSE(CMAKE_SYSTEM_NAME  MATCHES "Windows")
-   set_source_files_properties( src/NFreactions/reactions/DORreaction.cpp PROPERTIES  COMPILE_FLAGS  -std=c++11 )
-   set_source_files_properties( src/NFcore/molecule.cpp                   PROPERTIES  COMPILE_FLAGS  -std=c++11 ) 
-   set_source_files_properties( src/NFcore/templateMolecule.cpp           PROPERTIES  COMPILE_FLAGS  -std=c++11 ) 
-   set_source_files_properties( src/NFinput/NFinput.cpp                   PROPERTIES  COMPILE_FLAGS  -std=c++11 ) 
-ENDIF(CMAKE_SYSTEM_NAME  MATCHES "Windows")
-
-
-#include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${XMLRPC_INCLUDE_DIRS} ${SUB_DIRS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR} include ${SUB_DIRS})
 
 
