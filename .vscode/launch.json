@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "gdb_nmd_yeast",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/NFsim",
+            "args": [
+                "-xml", "./model.xml",
+                "-sim", "10000",
+                "-oSteps", "10",
+                "-seed", "111",
+                "-o", "./model.gdat",
+                "-rxnlog", "./model.rxns.tsv",
+                "-utl", "3",
+                "-gml", "1000000",
+                "-maxcputime", "6000",
+                "-connect"
+            ],
+            "stopAtEntry": false,
+            "cwd": "/home/rasi/git/nmd_yeast",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}
