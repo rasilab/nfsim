@@ -575,7 +575,7 @@ void ReactionClass::fire(double random_A_number) {
 	// output if the reaction was tagged
 	if (tagged) {
 	for( molIter = products.begin(); molIter != products.end(); molIter++ ) {
-		if  ((*molIter)->getMoleculeType()->getName() != "mrna") continue;
+	//	if  ((*molIter)->getMoleculeType()->getName() != "mrna") continue;
 
 		this->system->current_cpu_time = ((double) (clock() - this->system->start) / (double) CLOCKS_PER_SEC);
 		// print the time and reaction name
